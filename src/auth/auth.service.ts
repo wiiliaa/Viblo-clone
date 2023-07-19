@@ -28,11 +28,11 @@ export class AuthService {
 
   async login(
     authCredentials: AuthCredentials,
-  ): Promise<{ accessToken: string; message }> {
+  ): Promise<{ accessToken: string }> {
     const username = await this.validateUserPassword(authCredentials);
     const payload: JwtPayload = { username };
     const accessToken = this.jwtService.sign(payload);
-    return { accessToken, message: 'Login success' };
+    return { accessToken };
   }
 
   async validateUserPassword(authCredentials: AuthCredentials) {
